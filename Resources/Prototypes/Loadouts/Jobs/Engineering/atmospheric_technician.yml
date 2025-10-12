@@ -124,6 +124,11 @@
   equipment:
     outerClothing: ClothingOuterWinterAtmos
 
+- type: loadout # CorvaxGoob
+  id: AtmosphericsOveralls 
+  equipment:
+    outerClothing: ClothingAtmosphericsOveralls
+
 # Shoes
 - type: loadout
   id: WhiteShoes
