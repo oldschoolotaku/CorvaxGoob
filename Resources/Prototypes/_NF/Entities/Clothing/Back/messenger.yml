@@ -71,9 +71,9 @@
 # CorvaxGoob Start
 - type: entity
   parent: ClothingBackpackMessengerBase
-  id: ClothingBackpackMessengerAtmospherics
-  name: atmospherics messenger bag
-  description: A robust bag made of fire resistant fibers. Smells like plasma.
+  id: ClothingBackpackMessengerChiefEngineer
+  name: chief engineer's messenger bag
+  description: A robust bag made of fire resistant fibers. Smells like beer.
   components:
   - type: Sprite
     sprite: _CorvaxGoob/Clothing/Back/Messenger/ce.rsi
