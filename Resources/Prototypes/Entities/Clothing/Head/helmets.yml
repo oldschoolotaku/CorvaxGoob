@@ -572,9 +572,9 @@
   description: An in-atmosphere helmet worn by the leader of a Nanotrasen Emergency Response Team. Has blue highlights.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/ert_leader.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_leader.rsi # CorvaxGoob
   - type: Clothing
-    sprite: Clothing/Head/Helmets/ert_leader.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_leader.rsi # CorvaxGoob
  # - type: HideLayerClothing  #Goobstation
  #   layers:
  #     Hair: HEAD
@@ -587,9 +587,9 @@
   description: An in-atmosphere helmet worn by security members of the Nanotrasen Emergency Response Team. Has red highlights.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/ert_security.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_security.rsi # CorvaxGoob
   - type: Clothing
-    sprite: Clothing/Head/Helmets/ert_security.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_security.rsi # CorvaxGoob
  # - type: HideLayerClothing  #Goobstation
  #   layers:
  #     Hair: HEAD
@@ -602,9 +602,9 @@
   description: An in-atmosphere helmet worn by medical members of the Nanotrasen Emergency Response Team. Has white highlights.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/ert_medic.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_medic.rsi # CorvaxGoob
   - type: Clothing
-    sprite: Clothing/Head/Helmets/ert_medic.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_medic.rsi # CorvaxGoob
   #- type: HideLayerClothing  #Goobstation
   #  layers:
   #    Hair: HEAD
@@ -617,9 +617,9 @@
   description: An in-atmosphere helmet worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights and keeps your eyes safe.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/ert_engineer.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_engineer.rsi # CorvaxGoob
   - type: Clothing
-    sprite: Clothing/Head/Helmets/ert_engineer.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_engineer.rsi # CorvaxGoob
   - type: EyeProtection # goob - it literally has them in the sprite.
  # - type: HideLayerClothing  #Goobstation
  #   layers:
@@ -633,9 +633,9 @@
   description: An in-atmosphere helmet worn by janitorial members of the Nanotrasen Emergency Response Team. Has dark purple highlights.
   components:
   - type: Sprite
-    sprite: Clothing/Head/Helmets/ert_janitor.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_janitor.rsi # CorvaxGoob
   - type: Clothing
-    sprite: Clothing/Head/Helmets/ert_janitor.rsi
+    sprite: _Corvax/Clothing/Head/Helmets/ert_janitor.rsi # CorvaxGoob
   #- type: HideLayerClothing  #Goobstation
   #  layers:
   #    Hair: HEAD
