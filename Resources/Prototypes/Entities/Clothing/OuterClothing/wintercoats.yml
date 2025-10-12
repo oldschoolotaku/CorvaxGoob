@@ -724,7 +724,6 @@
   components:
   - type: Sprite
     sprite: _Corvax/Clothing/OuterClothing/WinterCoats/syndicate/coatsyndiecaparmored.rsi #CorvaxGoob
-    state: SYNDIE-ARMORED-icon
   - type: Clothing
     sprite: _Corvax/Clothing/OuterClothing/WinterCoats/syndicate/coatsyndiecaparmored.rsi #CorvaxGoob
   - type: ToggleableClothing # Goobstation - Modsuits change
@@ -755,9 +754,9 @@
   description: An oversized, plasticine space tuxedo that'll have people asking "do you know me?"
   components:
   - type: Sprite
-    sprite: _Corvax/Clothing/OuterClothing/WinterCoats/coatnomi.rsi
+    sprite: _Corvax/Clothing/OuterClothing/WinterCoats/coatnomi.rsi #CorvaxGoob
   - type: Clothing
-    sprite: _Corvax/Clothing/OuterClothing/WinterCoats/coatnomi.rsi
+    sprite: _Corvax/Clothing/OuterClothing/WinterCoats/coatnomi.rsi #CorvaxGoob
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
