@@ -68,6 +68,17 @@
       - state: clasp-inhand-right
         color: "#f6d56a"
 
+# CorvaxGoob Start
+- type: entity
+  parent: ClothingBackpackMessengerBase
+  id: ClothingBackpackMessengerAtmospherics
+  name: atmospherics messenger bag
+  description: A robust bag made of fire resistant fibers. Smells like plasma.
+  components:
+  - type: Sprite
+    sprite: _CorvaxGoob/Clothing/Back/Messenger/ce.rsi
+# CorvaxGoob End
+
 - type: entity
   parent: [ BaseCentcommContraband , ClothingBackpackMessengerBase ]
   id: ClothingBackpackMessengerCentcomm
