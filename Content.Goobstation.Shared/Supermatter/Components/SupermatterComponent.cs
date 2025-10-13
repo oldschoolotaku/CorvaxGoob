@@ -99,9 +99,12 @@ public sealed partial class SupermatterComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public float HeatThreshold = 2500f;
 
-    [DataField("radiationOutputFactor")]
-    [ViewVariables(VVAccess.ReadWrite)]
-    public float RadiationOutputFactor = 0.03f;
+    // CorvaxGoob Radiation Overhaul Revert - Start
+    // [DataField("radiationOutputFactor")]
+    // [ViewVariables(VVAccess.ReadWrite)]
+    // public float RadiationOutputFactor = 0.03f;
+    // CorvaxGoob Radiation Overhaul Revert - End
+
     #endregion SM Base
 
     #region SM Sound
