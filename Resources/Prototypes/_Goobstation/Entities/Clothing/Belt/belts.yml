@@ -26,9 +26,9 @@
   description: A medical chest rig with deep pockets, for use by health professionals.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Belt/cmowebbing.rsi
+    sprite: _CorvaxGoob/Clothing/Belt/cmowebbing.rsi # CorvaxGoob
   - type: Clothing
-    sprite: _Goobstation/Clothing/Belt/cmowebbing.rsi
+    sprite: _CorvaxGoob/Clothing/Belt/cmowebbing.rsi # CorvaxGoob
   - type: Storage
     grid:
       - 0,0,6,2
