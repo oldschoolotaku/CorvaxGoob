@@ -252,9 +252,9 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
             // CorvaxGoob Radiation Overhaul Revert - Start
             // var transmittedpower = sm.Power * Math.Max(0, 1f + transmissionBonus / 10f);
             // rad.Intensity = transmittedpower * sm.RadiationOutputFactor;
-            // CorvaxGoob Radiation Overhaul Revert - End
 
             rad.Intensity = sm.Power * Math.Max(0, 1f + transmissionBonus / 10f) * 0.003f;
+            // CorvaxGoob Radiation Overhaul Revert - End
         }
 
         //Power * 0.55 * a value between 1 and 0.8
