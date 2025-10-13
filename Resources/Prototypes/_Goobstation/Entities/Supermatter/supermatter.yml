@@ -22,8 +22,7 @@
     mode: SnapgridCenter
   components:
     - type: Supermatter
-      # CorvaxGoob Radiation Overhaul Revert
-      #radiationOutputFactor: 0.005
+      radiationOutputFactor: 0.005
       whitelist:
         tags:
           - EmitterBolt

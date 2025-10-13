@@ -249,12 +249,8 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
         //Radiate stuff
         if (TryComp<RadiationSourceComponent>(uid, out var rad))
         {
-            // CorvaxGoob Radiation Overhaul Revert - Start
-            // var transmittedpower = sm.Power * Math.Max(0, 1f + transmissionBonus / 10f);
-            // rad.Intensity = transmittedpower * sm.RadiationOutputFactor;
-
-            rad.Intensity = sm.Power * Math.Max(0, 1f + transmissionBonus / 10f) * 0.003f;
-            // CorvaxGoob Radiation Overhaul Revert - End
+            var transmittedpower = sm.Power * Math.Max(0, 1f + transmissionBonus / 10f);
+            rad.Intensity = transmittedpower * sm.RadiationOutputFactor;
         }
 
         //Power * 0.55 * a value between 1 and 0.8
