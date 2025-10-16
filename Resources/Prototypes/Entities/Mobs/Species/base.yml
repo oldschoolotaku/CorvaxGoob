@@ -505,7 +505,8 @@
     penetrateDamage: 50
     damagePenalty: 0.2
   - type: ExaminableCharacter # WWDP
-  - type: Sprinter # Goobstation
+  # CorvaxGoob - Fuck sprinting
+  #- type: Sprinter # Goobstation
   - type: SprintingAffectedByScale # Goobstation: port EE height/width sliders
   - type: MindControllable # Goobstation
 

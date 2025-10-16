@@ -8,8 +8,9 @@
   - type: CombatMode
   - type: InputMover
   - type: MobMover
-  - type: Sprinter
-    canSprint: false
+  # CorvaxGoob - Fuck sprinting
+  #- type: Sprinter
+  #  canSprint: false
   - type: HTN
     rootTask:
       task: XenoCompound

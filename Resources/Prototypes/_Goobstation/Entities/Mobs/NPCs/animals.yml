@@ -812,8 +812,9 @@
     attributes:
       proper: true
       gender: male
-  - type: Sprinter
-    staminaDrainRate: 2
+  # CorvaxGoob - Fuck sprinting
+  #- type: Sprinter
+  #  staminaDrainRate: 2
   - type: TemperatureSpeed
     thresholds:
       293: 0.8
