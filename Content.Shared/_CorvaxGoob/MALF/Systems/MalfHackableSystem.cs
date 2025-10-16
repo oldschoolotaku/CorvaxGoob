@@ -1,11 +1,6 @@
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared._CorvaxGoob.MALF.Components;
-using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.Silicons.StationAi;
-using Content.Shared.Store;
-using Content.Shared.Store.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CorvaxGoob.MALF.Systems;
 

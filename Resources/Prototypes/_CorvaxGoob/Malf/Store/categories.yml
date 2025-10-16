@@ -6,9 +6,9 @@
 - type: storeCategory
   id: MalfUtility
   name: store-malf-utility-modules # Utility Modules
-  priority: 0
+  priority: 1
 
 - type: storeCategory
   id: MalfUpgrade
   name: store-malf-upgrade-modules # Upgrade Modules
-  priority: 0
+  priority: 2

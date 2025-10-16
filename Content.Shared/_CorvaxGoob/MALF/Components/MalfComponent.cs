@@ -14,11 +14,13 @@ public sealed partial class MalfComponent : Component
     [DataField]
     public int BaseCpu = 30;
 
-    [DataField]
-    public EntProtoId BaseAction = "ActionMalfOpenStore";
 
     [DataField]
-    public List<ProtoId<MalfAbilityPrototype>> ModulesBought = new();
+    public List<ProtoId<MalfModulePrototype>> BaseModules = new()
+    {
+        "MalfStore",
+        "HackApcModule"
+    };
 
     [DataField]
     public ProtoId<FactionIconPrototype> StatusIcon = "MalfFaction";

@@ -6,10 +6,13 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Objectives;
 using Content.Server.Roles;
+using Content.Server.Silicons.Laws;
 using Content.Shared._CorvaxGoob.MALF.Components;
+using Content.Shared._CorvaxNext.Silicons.Borgs;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
+using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
@@ -34,7 +37,6 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
 
     private readonly ProtoId<NpcFactionPrototype> _malfFactionId = "MalfAI";
     private readonly ProtoId<NpcFactionPrototype> _nanotrasenFactionId = "NanoTrasen";
-    private readonly ProtoId<StoreCategoryPrototype> _malfStoreId = "MalfStore";
     private readonly ProtoId<CurrencyPrototype> _currency = "CPU";
 
     private static readonly EntProtoId MindRole = "MindRoleMalf";
@@ -61,6 +63,9 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         if (!HasComp<StationAiHeldComponent>(target)) //really to be sure target is AI
             return;
 
+        if (!HasComp<SiliconLawBoundComponent>(target))
+            return;
+
         _role.MindAddRole(mindId, MindRole.Id, mind, true);
 
         if (HasComp<MetaDataComponent>(target))
@@ -80,7 +85,11 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         EnsureComp<MalfComponent>(target);
 
         var store = EnsureComp<StoreComponent>(target);
-        store.Categories.Add(_malfStoreId);
+        foreach (var category in rule.StoreCategories)
+        {
+            store.Categories.Add(category);
+        }
+
         store.CurrencyWhitelist.Add(_currency);
 
         rule.Minds.Add(mindId);
@@ -91,7 +100,7 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         }
     }
 
-    public void OnTextPrepend(Entity<MalfRuleComponent> ent, ref ObjectivesTextPrependEvent args)
+    private void OnTextPrepend(Entity<MalfRuleComponent> ent, ref ObjectivesTextPrependEvent args)
     {
         var sb = new StringBuilder();
 

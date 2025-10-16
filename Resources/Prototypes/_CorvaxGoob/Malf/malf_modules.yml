@@ -1,0 +1,10 @@
+- type: malfModule
+  id: MalfStore
+  actionPrototypes:
+  - ActionMalfOpenStore
+
+#- type: malfModule
+#  id: HackApcModule
+#  actionPrototypes:
+#  - ActionHackApc
+

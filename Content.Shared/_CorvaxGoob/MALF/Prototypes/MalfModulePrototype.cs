@@ -2,13 +2,13 @@
 
 namespace Content.Shared._CorvaxGoob.MALF.Prototypes;
 
-[Prototype("malfAbility")]
+[Prototype("malfModule")]
 [DataDefinition]
-public sealed partial class MalfAbilityPrototype : IPrototype
+public sealed partial class MalfModulePrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
 
     [DataField] public object? Event;
-    [DataField] public EntProtoId? ActionPrototype;
+    [DataField] public List<EntProtoId>? ActionPrototypes;
 }

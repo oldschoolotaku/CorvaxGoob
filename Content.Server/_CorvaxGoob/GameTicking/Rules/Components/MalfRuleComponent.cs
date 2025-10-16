@@ -3,15 +3,17 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CorvaxGoob.GameTicking.Rules.Components;
 
-/// <summary>
-/// This is used for...
-/// </summary>
 [RegisterComponent]
 public sealed partial class MalfRuleComponent : Component
 {
-    public readonly List<EntityUid> Minds = new();
+    public readonly List<EntityUid> Minds = new(); //somehow, I had three AIs at once
 
-    public readonly ProtoId<StoreCategoryPrototype> Store = "MalfStore";
+    public readonly List<ProtoId<StoreCategoryPrototype>> StoreCategories = new()
+    {
+        "MalfDestructive",
+        "MalfUtility",
+        "MalfUpgrade",
+    };
 
     public readonly List<ProtoId<EntityPrototype>> Objectives = new()
     {
