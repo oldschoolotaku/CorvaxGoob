@@ -1,0 +1,7 @@
+- type: antag
+  id: Malf
+  name: roles-antag-malf-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-malf-description
+  guides: [ Malf ]

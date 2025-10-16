@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseGameRule
+  id: Malf
+  components:
+  - type: MalfRule
+  - type: GameRule
+    minPlayers: 35
+  - type: AntagObjectives
+    objectives:
+    - MalfPreventShutdown
+  - type: AntagRandomObjectives
+    sets:
+      - groups: MalfBigObjectiveGroup
+        prob: 0.5
+        maxPicks: 2
+      - groups: MalfObjectiveGroup
+        maxPicks: 3
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    agentName: malf-roundend-name
+    definitions:
+    - prefRoles: [ Malf ]
+      max: 1
+      playerRatio: 35
+      chaosScore: 500
+      lateJoinAdditional: true
+#      jobBlacklist: [ Chaplain, ] # GOOBSTATION
+#      blacklist:
+#        components:
+#        - CommandStaff
+#        - AntagImmune
+      mindRoles:
+      - MindRoleMalf
+  - type: Tag
+    tags:
+    - RoundstartAntag

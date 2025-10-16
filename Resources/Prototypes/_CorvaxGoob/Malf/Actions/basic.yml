@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionMalfOpenStore
+  name: Download modules
+  description: Download modules.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Goobstation/Heretic/Abilities/base.rsi # TODO: Get normal icons
+      state: open_store
+    event: !type:EventMalfOpenStore {}

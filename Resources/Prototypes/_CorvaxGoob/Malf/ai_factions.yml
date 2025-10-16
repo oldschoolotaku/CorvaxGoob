@@ -1,0 +1,8 @@
+- type: npcFaction
+  id: MalfAI
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Zombie
+  - Revolutionary
+  - Changeling

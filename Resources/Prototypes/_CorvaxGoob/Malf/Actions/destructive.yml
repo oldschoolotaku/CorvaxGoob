@@ -1,0 +1,14 @@
+# Destructive modules here
+- type: listing
+  id: MalfDoomsday
+  name: malf-store-destructive-doomsday
+  description: malf-store-destructive-doomsday-desc
+  icon: { sprite: Goobstation/Heretic/Blades/blade_ash.rsi, state: icon } #TODO: Get normal icons
+  raiseProductEventOnUser: true
+  cost:
+    CPU: 130
+  categories:
+  - MalfDestructive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

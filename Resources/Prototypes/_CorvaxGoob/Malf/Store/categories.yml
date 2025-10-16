@@ -1,0 +1,14 @@
+- type: storeCategory
+  id: MalfDestructive
+  name: store-malf-destructive-modules # Destructive Modules
+  priority: 0
+
+- type: storeCategory
+  id: MalfUtility
+  name: store-malf-utility-modules # Utility Modules
+  priority: 0
+
+- type: storeCategory
+  id: MalfUpgrade
+  name: store-malf-upgrade-modules # Upgrade Modules
+  priority: 0

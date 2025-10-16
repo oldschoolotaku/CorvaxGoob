@@ -1,0 +1,14 @@
+- type: weightedRandom
+  id: MalfBigObjective
+  weights:
+    MalfPreventOrganicLifeforms: 4
+    MalfPreventNonhumanEvac: 2
+    MalfHaveSyncedCyborgs: 1
+
+- type: weightedRandom
+  id: MalfObjectiveGroup
+  weights:
+    KillRandomPersonObjective: 1
+    KillRandomHeadObjective: 1.5
+    RandomTraitorAliveObjective: 1 # Why not?
+    RandomTraitorProgressObjective: 2

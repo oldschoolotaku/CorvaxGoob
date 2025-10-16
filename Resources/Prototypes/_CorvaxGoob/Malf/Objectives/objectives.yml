@@ -1,0 +1,74 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseMalfObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-malf
+  - type: RoleRequirement
+    roles:
+    - MalfRole
+
+- type: entity
+  parent: [BaseMalfObjective, BaseLivingObjective]
+  id: MalfPreventShutdown
+  description: Prevent your deactivation.
+  components:
+  - type: TargetObjective
+    difficulty: 1.0
+    title: objective-condition-other-traitor-progress-title
+  - type: Objective
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+
+# TODO: Finish those
+- type: entity
+  parent: BaseMalfObjective
+  id: MalfPreventOrganicLifeforms
+  description: You should prevent any living being from escaping on evacuation shuttle.
+  components:
+  - type: TargetObjective
+    difficulty: 5.0
+    title: objective-condition-other-traitor-progress-title
+  - type: Objective
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+    components:
+    - MalfPreventNonhumanEvac
+  - type: HijackShuttleCondition
+
+- type: entity
+  parent: BaseMalfObjective
+  id: MalfPreventNonhumanEvac
+  description: You should prevent any living being aside humans from escaping on evacuation shuttle.
+  components:
+  - type: TargetObjective
+    difficulty: 3.5
+    title: objective-condition-other-traitor-progress-title
+  - type: Objective
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      components:
+      - MalfPreventOrganicLifeforms
+
+- type: entity
+  parent: BaseMalfObjective
+  id: MalfHaveSyncedCyborgs
+  components:
+  - type: TargetObjective
+    difficulty: 1.5
+    title: objective-condition-other-traitor-progress-title
+  - type: Objective
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: NumberObjective
+    min: 1
+    max: 4

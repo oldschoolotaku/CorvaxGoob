@@ -310,5 +310,20 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(cosmiccult);
         // End DeltaV Additions
+
+        // CorvaxGoob - MALF
+        Verb malf = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-malf"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CorvaxGoob/MALF/malf_icon.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<_CorvaxGoob.GameTicking.Rules.Components.MalfRuleComponent>(targetPlayer, "Malf");
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-text-malf"),
+        };
+        args.Verbs.Add(malf);
     }
 }
