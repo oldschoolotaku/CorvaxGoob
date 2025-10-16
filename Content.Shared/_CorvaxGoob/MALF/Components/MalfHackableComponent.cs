@@ -1,4 +1,6 @@
-﻿namespace Content.Shared._CorvaxGoob.MALF.Components;
+using Robust.Shared.Utility;
+
+namespace Content.Shared._CorvaxGoob.MALF.Components;
 
 [RegisterComponent]
 public sealed partial class MalfHackableComponent : Component
@@ -11,4 +13,10 @@ public sealed partial class MalfHackableComponent : Component
 
     [DataField]
     public bool Hacked = false;
+
+    /// <summary>
+    /// Used for changing APC Sprite
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier HackedOverlay;
 }

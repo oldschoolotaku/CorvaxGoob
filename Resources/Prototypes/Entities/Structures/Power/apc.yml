@@ -211,6 +211,15 @@
     - Power
   - type: BatteryDrinkerSource # EE IPCs
     maxAmount: 10000
+  - type: MalfHackable # CorvaxGoob MALF
+    cpu: 10
+    hackedOverlay:
+      sprite: Structures/Power/apc.rsi
+      state: emag-unlit
+      visible: false
+      shader: unshaded
+      map: ["enum.ApcVisualLayers.ChargeState"]
+      
 
 # APC under construction
 - type: entity

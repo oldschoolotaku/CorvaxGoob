@@ -12,7 +12,10 @@ namespace Content.Shared._CorvaxGoob.MALF.Components;
 public sealed partial class MalfComponent : Component
 {
     [DataField]
-    public EntProtoId BaseAction = "ActionHereticOpenStore";
+    public int BaseCpu = 30;
+
+    [DataField]
+    public EntProtoId BaseAction = "ActionMalfOpenStore";
 
     [DataField]
     public List<ProtoId<MalfAbilityPrototype>> ModulesBought = new();
