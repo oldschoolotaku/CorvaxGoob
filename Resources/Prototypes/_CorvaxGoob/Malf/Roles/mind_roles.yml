@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleMalf
+  name: Malfunctioning AI Role
+  components:
+  - type: MindRole
+    antagPrototype: Malf
+    exclusiveAntag: true
+    roleType: SoloAntagonist
+    subtype: role-subtype-malf
+  - type: MalfRole

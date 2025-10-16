@@ -93,6 +93,7 @@ using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
+using Content.Shared.Silicons.StationAi;
 using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -319,11 +320,14 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CorvaxGoob/MALF/malf_icon.rsi"), "icon"),
             Act = () =>
             {
-                _antag.ForceMakeAntag<_CorvaxGoob.GameTicking.Rules.Components.MalfRuleComponent>(targetPlayer, "Malf");
+                _antag.ForceMakeAntag<_CorvaxGoob.GameTicking.Rules.Components.MalfRuleComponent>(targetPlayer, "MalfunctioningAi");
             },
             Impact = LogImpact.High,
             Message = Loc.GetString("admin-verb-text-malf"),
         };
-        args.Verbs.Add(malf);
+
+        if (HasComp<StationAiOverlayComponent>(args.Target)) //To prevent admemes crashing the server
+            args.Verbs.Add(malf);
+
     }
 }

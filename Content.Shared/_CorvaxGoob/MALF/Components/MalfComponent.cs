@@ -25,10 +25,4 @@ public sealed partial class MalfComponent : Component
 
     [DataField]
     public List<EntityUid> ProvidedActions = new();
-
-    [ViewVariables(VVAccess.ReadOnly)]
-    public bool NoLifeformsOnEvac = true;
-
-    [ViewVariables(VVAccess.ReadOnly)]
-    public bool NoNotHumansOnEvac = true;
 }

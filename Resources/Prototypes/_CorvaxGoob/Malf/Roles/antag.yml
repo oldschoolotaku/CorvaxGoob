@@ -1,7 +1,10 @@
 - type: antag
-  id: Malf
+  id: MalfunctioningAi
   name: roles-antag-malf-name
   antagonist: true
   setPreference: true
   objective: roles-antag-malf-description
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 54000 # 15h
   guides: [ Malf ]

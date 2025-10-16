@@ -10,7 +10,6 @@ using Content.Shared._CorvaxGoob.MALF.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
-using Content.Shared.Silicons.StationAi;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Shared.Audio;
@@ -30,12 +29,14 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
     [Dependency] private readonly ObjectivesSystem _objective = default!;
 
     private readonly SoundSpecifier _briefingSound = new SoundPathSpecifier
-        ("/Audio/_CorvaxGoob/Malf/Ambience/Antag/Malf/malf_gain.ogg");
+        ("/Audio/_CorvaxGoob/Malf/Ambience/Antag/Malf/malf.ogg");
 
     private readonly ProtoId<NpcFactionPrototype> _malfFactionId = "MalfAI";
     private readonly ProtoId<NpcFactionPrototype> _nanotrasenFactionId = "NanoTrasen";
     private readonly ProtoId<StoreCategoryPrototype> _malfStoreId = "MalfStore";
     private readonly ProtoId<CurrencyPrototype> _currency = "CPU";
+
+    private static readonly EntProtoId MindRole = "MindRoleMalf";
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -43,6 +44,7 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<MalfRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagSelect);
+        SubscribeLocalEvent<MalfRuleComponent, ObjectivesTextPrependEvent>(OnTextPrepend);
     }
 
     private void OnAntagSelect(Entity<MalfRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -55,8 +57,7 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         if (!_mind.TryGetMind(target, out var mindId, out var mind))
             return;
 
-        if (!HasComp<StationAiCoreComponent>(target))
-            return;
+        _role.MindAddRole(mindId, MindRole.Id, mind, true);
 
         if (HasComp<MetaDataComponent>(target))
         {
@@ -91,7 +92,6 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
         var sb = new StringBuilder();
 
         var borgsControlled = 0;
-        var lifeFormsEscaped = 0;
         var mostBorgsControlledName = string.Empty;
 
         foreach (var malf in EntityQuery<MalfComponent>())
@@ -101,24 +101,12 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
 
             var name = _objective.GetTitle((mindId, mind), Name(malf.Owner));
 
-            if (_mind.TryGetObjectiveComp<MalfPreventOrganicLifeformsConditionComponent>(mindId,
-                    out var organics, mind))
-            {
-                if (organics.NotPrevented > lifeFormsEscaped)
-                    lifeFormsEscaped = organics.NotPrevented;
-            }
             if (_mind.TryGetObjectiveComp<MalfHaveSyncedCyborgsConditionComponent>(mindId, out var cyborgs, mind))
             {
                 if (cyborgs.BorgsControlled > borgsControlled)
                     borgsControlled = cyborgs.BorgsControlled;
                 mostBorgsControlledName = name;
             }
-
-            // Че мне в голову пришло это писать?
-            var message = $"roundend-prepend-malf-{(lifeFormsEscaped == 0 ? "lifeforms-not-escaped"  : "lifeforms-escaped")}";
-
-            var str = Loc.GetString(message, ("name", name));
-            sb.AppendLine(str);
         }
 
         sb.AppendLine("\n" + Loc.GetString("roundend-prepend-malf-controlled-borgs-named", ("name", mostBorgsControlledName), ("number", borgsControlled)));

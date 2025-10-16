@@ -18,7 +18,7 @@ public sealed class MalfSystem : EntitySystem
 
         SubscribeLocalEvent<MalfComponent, ComponentInit>(OnCompInit);
     }
-    
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

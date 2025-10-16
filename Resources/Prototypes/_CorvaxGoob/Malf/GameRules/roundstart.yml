@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseGameRule
-  id: Malf
+  id: MalfunctioningAi
   components:
   - type: MalfRule
   - type: GameRule
@@ -8,13 +8,12 @@
   - type: AntagObjectives
     objectives:
     - MalfPreventShutdown
+    - MalfHaveSyncedCyborgs
   - type: AntagRandomObjectives
     sets:
-      - groups: MalfBigObjectiveGroup
-        prob: 0.5
-        maxPicks: 2
       - groups: MalfObjectiveGroup
-        maxPicks: 3
+        maxDifficulty:
+    maxDifficulty: 2.5
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
     agentName: malf-roundend-name

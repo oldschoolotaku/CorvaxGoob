@@ -13,6 +13,12 @@ public sealed partial class MalfObjectiveSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MalfHaveSyncedCyborgsConditionComponent, ObjectiveGetProgressEvent>(OnGetSyncedBorgProgress);
+        SubscribeLocalEvent<MalfPreventShutdownConditionComponent, ObjectiveGetProgressEvent>(OnGetPreventDeactivationCondition);
+    }
+
+    private void OnGetPreventDeactivationCondition(Entity<MalfPreventShutdownComponent> ent, ref ObjectiveGetProgressEvent args)
+    {
+        args.Progress = ent.Comp.Deactivated ? 0 : 1;
     }
 
     private void OnGetSyncedBorgProgress(Entity<MalfHaveSyncedCyborgsConditionComponent> ent, ref ObjectiveGetProgressEvent args)
