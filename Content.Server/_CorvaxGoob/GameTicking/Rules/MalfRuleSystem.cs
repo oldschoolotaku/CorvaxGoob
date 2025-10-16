@@ -10,6 +10,7 @@ using Content.Shared._CorvaxGoob.MALF.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
+using Content.Shared.Silicons.StationAi;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Shared.Audio;
@@ -55,6 +56,9 @@ public sealed class MalfRuleSystem : GameRuleSystem<MalfRuleComponent>
     private void TryMakeMalf(EntityUid target, MalfRuleComponent rule)
     {
         if (!_mind.TryGetMind(target, out var mindId, out var mind))
+            return;
+
+        if (!HasComp<StationAiHeldComponent>(target)) //really to be sure target is AI
             return;
 
         _role.MindAddRole(mindId, MindRole.Id, mind, true);

@@ -13,23 +13,22 @@
 - type: entity
   parent: [BaseMalfObjective, BaseLivingObjective]
   id: MalfPreventShutdown
-  description: Prevent your deactivation.
+  description: I must be turned on to withess their death
   components:
   - type: TargetObjective
-    title: objective-condition-other-traitor-progress-title
+    title: malf-objective-prevent-shutdown
   - type: Objective
     icon:
       sprite: Structures/Furniture/chairs.rsi
       state: shuttle
-  - type: MalfPreventDeactivationCondition
+  - type: MalfPreventShutdownCondition
 
 # TODO: Finish those
 - type: entity
   parent: BaseMalfObjective
   id: MalfHaveSyncedCyborgs
+  description: We need those cyborgs to be controlled by you.
   components:
-  - type: TargetObjective
-    title: objective-condition-other-traitor-progress-title
   - type: Objective
     icon:
       sprite: Structures/Furniture/chairs.rsi
@@ -37,4 +36,5 @@
   - type: NumberObjective
     min: 1
     max: 4
+    title: malf-objective-control-cyborgs
   - type: MalfHaveSyncedCyborgsCondition

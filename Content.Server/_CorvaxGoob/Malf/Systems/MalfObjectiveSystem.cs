@@ -16,7 +16,7 @@ public sealed partial class MalfObjectiveSystem : EntitySystem
         SubscribeLocalEvent<MalfPreventShutdownConditionComponent, ObjectiveGetProgressEvent>(OnGetPreventDeactivationCondition);
     }
 
-    private void OnGetPreventDeactivationCondition(Entity<MalfPreventShutdownComponent> ent, ref ObjectiveGetProgressEvent args)
+    private void OnGetPreventDeactivationCondition(Entity<MalfPreventShutdownConditionComponent> ent, ref ObjectiveGetProgressEvent args)
     {
         args.Progress = ent.Comp.Deactivated ? 0 : 1;
     }
@@ -24,8 +24,9 @@ public sealed partial class MalfObjectiveSystem : EntitySystem
     private void OnGetSyncedBorgProgress(Entity<MalfHaveSyncedCyborgsConditionComponent> ent, ref ObjectiveGetProgressEvent args)
     {
         var target = _number.GetTarget(ent);
-        if (target != 0)
-            args.Progress = MathF.Min(ent.Comp.BorgsControlled / target, 1f);
-        else args.Progress = 1;
+
+        // I fucking hate this warning popping up
+        // ReSharper disable once PossibleLossOfFraction
+        args.Progress = target != 0 ? MathF.Min(ent.Comp.BorgsControlled / target, 1f) : 1;
     }
 }
