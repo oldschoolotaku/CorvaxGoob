@@ -2,11 +2,11 @@
   id: ActionMalfOpenStore
   name: Download modules
   description: Download modules.
+  noSpawn: true
   components:
   - type: InstantAction
-    checkCanInteract: false
-    itemIconStyle: BigAction
+    itemIconStyle: NoItem
     icon:
-      sprite: _CorvaxGoob/MALF/actions_malf.rsi
-      state: modules_menu
-    event: !type:MalfAiOpenShopAction
+      sprite: _Goobstation/Heretic/Abilities/base.rsi # TODO: Get normal icons
+      state: open_store
+    event: !type:EventMalfOpenStore {}

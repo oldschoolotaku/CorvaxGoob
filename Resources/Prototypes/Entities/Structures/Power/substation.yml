@@ -241,7 +241,6 @@
     requirePower: true
     highVoltageNode: input
     mediumVoltageNode: output
-  - type: StationAiWhitelist # CorvaxGoob MALF
 
 # Compact Wall Substation Base
 - type: entity
@@ -316,7 +315,6 @@
     intensitySlope: 2
     totalIntensity: 100
   - type: WallMount
-  - type: StationAiWhitelist # CorvaxGoob MALF
 
 # Substations in use
 

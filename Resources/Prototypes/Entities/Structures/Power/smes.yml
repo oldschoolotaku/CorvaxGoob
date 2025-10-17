@@ -131,7 +131,6 @@
       sendBroadcastAttemptEvent: true
       examinableAddress: true
     - type: WiredNetworkConnection
-    - type: StationAiWhitelist # CorvaxGoob MALF
     - type: GuideHelp
       guides:
       - PowerStorage

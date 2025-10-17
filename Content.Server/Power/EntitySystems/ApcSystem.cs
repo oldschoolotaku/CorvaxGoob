@@ -33,7 +33,6 @@ using Content.Server.Emp;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.Pow3r;
-using Content.Shared._CorvaxGoob.MALF.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.APC;
 using Content.Shared.Emag.Systems;
@@ -161,13 +160,7 @@ public sealed class ApcSystem : EntitySystem
 
         if (apc.LastChargeStateTime == null || apc.LastChargeStateTime + ApcComponent.VisualsChangeDelay < _gameTiming.CurTime)
         {
-            // CorvaxGoob MALF start
-            var hacked = TryComp<MalfHackableComponent>(uid, out var hackComp) && hackComp.Hacked;
-
-            // var newState = CalcChargeState(uid, battery.NetworkBattery);
-            var newState = hacked ? ApcChargeState.Emag : CalcChargeState(uid, battery.NetworkBattery);
-            // CorvaxGoob MALF end
-
+            var newState = CalcChargeState(uid, battery.NetworkBattery);
             if (newState != apc.LastChargeState)
             {
                 apc.LastChargeState = newState;

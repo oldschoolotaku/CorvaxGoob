@@ -19,3 +19,5 @@ public sealed partial class MalfActionComponent : Component
     [DataField]
     public bool Infinite = false;
 }
+
+public sealed partial class EventMalfOpenStore : InstantActionEvent;

@@ -173,8 +173,6 @@
         type: RemoteDevicesBoundUserInterface
       enum.CamWarpUiKey.Key: # Goobstation-Ai-Camera-Jumping
         type: AiCameraWarpBoundUserInterface
-      enum.StoreUiKey.Key: # CorvaxGoob MALF
-        type: StoreBoundUserInterface
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -315,15 +313,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 500 # CorvaxGoob MALF
+        damage: 100
       behaviors:
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: Damageable # CorvaxGoob MALF
-    damageModifierSet: MediumArmorNT
   - type: ApcPowerReceiver
     powerLoad: 1000
     needsPower: false
