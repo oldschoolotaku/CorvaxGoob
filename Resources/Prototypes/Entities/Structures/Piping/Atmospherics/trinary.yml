@@ -231,6 +231,7 @@
     - type: GuideHelp
       guides:
       - MixingAndFiltering
+    - type: StationAiWhitelist # CorvaxGoob MALF
     - type: VentCrawlerTube # Goobstation - ventcrawl
       containerId: VentCrawlerTube
     - type: VentCrawlerJunction # Goobstation - ventcrawl

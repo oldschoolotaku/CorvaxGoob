@@ -138,6 +138,7 @@
     - Pumps
   - type: VentCrawlerTube # Goobstation - ventcrawl
     containerId: VentCrawlerTube
+  - type: StationAiWhitelist # CorvaxGoob MALF
   - type: VentCrawlerTransit # Goobstation - ventcrawl
   - type: ContainerContainer # Goobstation - ventcrawl
     containers:
@@ -212,6 +213,7 @@
     - type: WiredNetworkConnection
     - type: AtmosMonitoringConsoleDevice
       navMapBlip: GasFlowRegulator
+    - type: StationAiWhitelist # CorvaxGoob MALF
     - type: GuideHelp
       guides:
       - Pumps
@@ -313,6 +315,7 @@
     - type: Construction
       graph: GasBinary
       node: passivegate
+    - type: StationAiWhitelist # CorvaxGoob MALF
     - type: AmbientSound
       enabled: true
       volume: -9

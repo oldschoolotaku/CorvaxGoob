@@ -1,5 +1,6 @@
 ﻿using Content.Server.Store.Systems;
 using Content.Shared._CorvaxGoob.MALF.Components;
+using Content.Shared._CorvaxGoob.MALF.Events;
 using Content.Shared.Store.Components;
 
 namespace Content.Server._CorvaxGoob.Malf.Abilities;
@@ -12,10 +13,10 @@ public sealed class MalfAbilitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MalfComponent, EventMalfOpenStore>(OnStore);
+        //SubscribeLocalEvent<MalfComponent, MalfAiOpenShopAction>(OnStore);
     }
 
-    private void OnStore(Entity<MalfComponent> ent, ref EventMalfOpenStore args)
+    private void OnStore(Entity<MalfComponent> ent, ref MalfAiOpenShopAction args)
     {
         if (!TryComp<StoreComponent>(ent, out var store))
             return;

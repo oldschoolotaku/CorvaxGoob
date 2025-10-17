@@ -38,7 +38,7 @@
   - !type:RoleTimeRequirement
     role: JobBorg
     time: 18000  # 5 hrs
-  canBeAntag: false
+  canBeAntag: true # CorvaxGoob MALF
   #goobcoins: 40 #Goob content Corvax-Goob-coins
   weight: 10 # Goob Edit
   icon: JobIconStationAi
