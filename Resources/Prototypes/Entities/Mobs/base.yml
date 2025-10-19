@@ -221,6 +221,10 @@
   abstract: true
   components:
   - type: CombatMode
+    combatActivationSound: # CorvaxGoob CombatMode Sound
+      path: "/Audio/_CorvaxGoob/Effects/Actions/CombatMode/ui_togglecombat.ogg"
+    combatDeactivationSound: # CorvaxGoob CombatMode Sound
+      path: "/Audio/_CorvaxGoob/Effects/Actions/CombatMode/ui_toggleoffcombat.ogg"
   - type: MeleeWeapon
     hidden: true
     soundHit:

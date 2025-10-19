@@ -27,6 +27,7 @@ using Content.Client.Hands.Systems;
 using Content.Client.NPC.HTN;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode;
+using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -41,6 +42,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     /// <summary>
     /// Raised whenever combat mode changes.
@@ -97,6 +99,13 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
 
         var inCombatMode = IsInCombatMode();
+
+        //CorvaxGoob CombatMode sound - Start
+        if (!TryComp<CombatModeComponent>(entity, out var comp))
+            return;
+        PlayCombatSound(entity, comp, inCombatMode);
+        //CorvaxGoob CombatMode sound - End
+
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
     }
 
@@ -116,4 +125,17 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             _overlayManager.RemoveOverlay<CombatModeIndicatorsOverlay>();
         }
     }
+
+    //CorvaxGoob CombatMode sound - Start
+    private void PlayCombatSound(EntityUid uid, CombatModeComponent comp, bool toggleOn)
+    {
+        if (comp.CombatActivationSound == null)
+            return;
+        if (comp.CombatDeactivationSound == null)
+            return;
+
+        // if toggleOn is true - we went into the harm mode. if it's false - then we went off the harm mode
+        _audio.PlayLocal(toggleOn ? comp.CombatActivationSound : comp.CombatDeactivationSound, uid, uid);
+    }
+    //CorvaxGoob CombatMode sound - End
 }

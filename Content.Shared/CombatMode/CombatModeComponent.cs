@@ -61,6 +61,14 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public EntityUid? CombatToggleActionEntity;
 
+        //CorvaxGoob CombatMode sound - Start
+        [DataField]
+        public SoundSpecifier? CombatActivationSound;
+
+        [DataField]
+        public SoundSpecifier? CombatDeactivationSound;
+        //CorvaxGoob CombatMode sound - End
+
         [ViewVariables(VVAccess.ReadWrite), DataField("isInCombatMode"), AutoNetworkedField]
         public bool IsInCombatMode;
 
