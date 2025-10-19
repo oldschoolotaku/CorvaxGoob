@@ -44,6 +44,9 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
+    //CorvaxGoob CombatMode Sound
+    private bool _combatModeSoundEnabled;
+
     /// <summary>
     /// Raised whenever combat mode changes.
     /// </summary>
@@ -56,6 +59,9 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         SubscribeLocalEvent<CombatModeComponent, AfterAutoHandleStateEvent>(OnHandleState);
 
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
+
+        //CorvaxGoob CombatMode Sound
+        _cfg.OnValueChanged(CCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
     }
 
     private void OnHandleState(EntityUid uid, CombatModeComponent component, ref AfterAutoHandleStateEvent args)
@@ -127,15 +133,16 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     }
 
     //CorvaxGoob CombatMode sound - Start
-    private void PlayCombatSound(EntityUid uid, CombatModeComponent comp, bool toggleOn)
+    private void PlayCombatSound(EntityUid uid, CombatModeComponent comp, bool combatModeOn)
     {
         if (comp.CombatActivationSound == null)
             return;
         if (comp.CombatDeactivationSound == null)
             return;
 
-        // if toggleOn is true - we went into the harm mode. if it's false - then we went off the harm mode
-        _audio.PlayLocal(toggleOn ? comp.CombatActivationSound : comp.CombatDeactivationSound, uid, uid);
+        if (_combatModeSoundEnabled)
+            // if combatModeOn is true - we went into the harm mode. if it's false - then we went off the harm mode
+            _audio.PlayLocal(combatModeOn ? comp.CombatActivationSound : comp.CombatDeactivationSound, uid, uid);
     }
     //CorvaxGoob CombatMode sound - End
 }

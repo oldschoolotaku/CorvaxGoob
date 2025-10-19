@@ -24,6 +24,11 @@ public sealed partial class CCVars
 
 
 
+    //CorvaxGoob CombatMode Sound - Start
+    public static readonly CVarDef<bool> CombatModeSoundEnabled =
+        CVarDef.Create("audio.combat_mode_sound_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+    //CorvaxGoob CombatMode Sound - End
+
     public static readonly CVarDef<bool> AdminSoundsEnabled =
         CVarDef.Create("audio.admin_sounds_enabled", true, CVar.ARCHIVE | CVar.CLIENTONLY);
 
