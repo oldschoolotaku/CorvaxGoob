@@ -61,7 +61,7 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public EntityUid? CombatToggleActionEntity;
 
-        //CorvaxGoob CombatMode sound - Start
+        //CorvaxGoob-CombatMode-Sound-Start
         [DataField]
         public SoundSpecifier? CombatActivationSound = new SoundPathSpecifier
             ("/Audio/_CorvaxGoob/Effects/Actions/CombatMode/ui_togglecombat.ogg");
@@ -69,7 +69,7 @@ namespace Content.Shared.CombatMode
         [DataField]
         public SoundSpecifier? CombatDeactivationSound = new SoundPathSpecifier
             ("/Audio/_CorvaxGoob/Effects/Actions/CombatMode/ui_toggleoffcombat.ogg");
-        //CorvaxGoob CombatMode sound - End
+        //CorvaxGoob-CombatMode-Sound-End
 
         [ViewVariables(VVAccess.ReadWrite), DataField("isInCombatMode"), AutoNetworkedField]
         public bool IsInCombatMode;

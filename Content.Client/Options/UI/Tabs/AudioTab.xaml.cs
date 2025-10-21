@@ -136,9 +136,9 @@ public sealed partial class AudioTab : Control
             _cfg.GetCVar(CCVars.MinMaxAmbientSourcesConfigured),
             _cfg.GetCVar(CCVars.MaxMaxAmbientSourcesConfigured));
 
-        // CorvaxGoob CombatMode Sound - Start
+        //CorvaxGoob-CombatMode-Sound-Start
         Control.AddOptionCheckBox(CCVars.CombatModeSoundEnabled, CombatModeSoundCheckBox);
-        // CorvaxGoob CombatMode Sound - End
+        //CorvaxGoob-CombatMode-Sound-End
 
         // Control.AddOptionCheckBox(GoobCVars.VoiceChatHearSelf, HearSelfCheckBox); Deleted by CorvaxGoob
         Control.AddOptionCheckBox(CCVars.LobbyMusicEnabled, LobbyMusicCheckBox);

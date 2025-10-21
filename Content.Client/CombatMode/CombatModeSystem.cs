@@ -44,7 +44,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
-    //CorvaxGoob CombatMode Sound
+    //CorvaxGoob-CombatMode-Sound
     private bool _combatModeSoundEnabled;
 
     /// <summary>
@@ -60,7 +60,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
 
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
 
-        //CorvaxGoob CombatMode Sound
+        //CorvaxGoob-CombatMode-Sound
         _cfg.OnValueChanged(CCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
     }
 
@@ -106,11 +106,11 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
 
         var inCombatMode = IsInCombatMode();
 
-        //CorvaxGoob CombatMode sound - Start
+        //CorvaxGoob-CombatMode-Sound-Start
         if (!TryComp<CombatModeComponent>(entity, out var comp))
             return;
         PlayCombatSound(entity, comp, inCombatMode);
-        //CorvaxGoob CombatMode sound - End
+        //CorvaxGoob-CombatMode-Sound-End
 
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
     }
@@ -132,7 +132,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
     }
 
-    //CorvaxGoob CombatMode sound - Start
+    //CorvaxGoob-CombatMode-Sound-Start
     private void PlayCombatSound(EntityUid uid, CombatModeComponent comp, bool combatModeOn)
     {
         if (comp.CombatActivationSound == null)
@@ -144,5 +144,5 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             // if combatModeOn is true - we went into the harm mode. if it's false - then we went off the harm mode
             _audio.PlayLocal(combatModeOn ? comp.CombatActivationSound : comp.CombatDeactivationSound, uid, uid);
     }
-    //CorvaxGoob CombatMode sound - End
+    //CorvaxGoob-CombatMode-Sound-End
 }
