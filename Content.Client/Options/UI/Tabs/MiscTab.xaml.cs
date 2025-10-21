@@ -89,6 +89,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared;
 using Robust.Shared.Prototypes;
 using Content.Goobstation.Common.CCVar;
+using Content.Shared._CorvaxNext;
 
 namespace Content.Client.Options.UI.Tabs;
 
@@ -139,6 +140,7 @@ public sealed partial class MiscTab : Control
         Control.AddOptionCheckBox(CCVars.ChatFancyNameBackground, FancyNameBackgroundsCheckBox);
         Control.AddOptionCheckBox(CCVars.StaticStorageUI, StaticStorageUI);
 
+        Control.AddOptionCheckBox(NextVars.OfferModeIndicatorsPointShow, ShowOfferModeIndicatorsCheckBox); // Corvax-Next-Offer
         Control.Initialize();
     }
 }
