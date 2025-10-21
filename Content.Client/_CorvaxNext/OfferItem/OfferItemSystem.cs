@@ -1,4 +1,6 @@
-﻿using Robust.Client.Graphics;
+﻿using Content.Shared._CorvaxNext;
+using Content.Shared._CorvaxNext.OfferItem;
+using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
