@@ -108,9 +108,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         var inCombatMode = IsInCombatMode();
 
         //CorvaxGoob-CombatMode-Sound-Start
-        if (!TryComp<CombatModeComponent>(entity, out var comp))
-            return;
-        PlayCombatModeSound(entity, comp, inCombatMode);
+        TryPlayCombatModeSound(entity);
         //CorvaxGoob-CombatMode-Sound-End
 
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
@@ -139,14 +137,17 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     /// Plays sounds based on activation/deactivation of the CombatMode
     /// </summary>
     /// <param name="uid">uid of entity that'll play the sound</param>
-    /// <param name="comp">CombatComponent of the entity</param>
-    /// <param name="combatModeOn">Determines what sound to play. If it's true - we've activated the CombatMode, if it's false - we've deactivated CombatMode</param>
-    private void PlayCombatModeSound(EntityUid uid, CombatModeComponent comp, bool combatModeOn)
+    private void TryPlayCombatModeSound(EntityUid uid)
     {
         if (_combatModeSoundEnabled == false)
             return;
 
-        switch (combatModeOn)
+        if (!TryComp<CombatModeComponent>(uid, out var comp))
+            return;
+
+        var inCombatMode = IsInCombatMode();
+
+        switch (inCombatMode)
         {
             case true:
                 if (comp.CombatActivationSound == null)
