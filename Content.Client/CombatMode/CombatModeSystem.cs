@@ -25,6 +25,7 @@
 
 using Content.Client.Hands.Systems;
 using Content.Client.NPC.HTN;
+using Content.Shared._CorvaxGoob.CCCVars;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode;
 using Robust.Client.Audio;
@@ -61,7 +62,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
 
         //CorvaxGoob-CombatMode-Sound
-        _cfg.OnValueChanged(CCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
+        _cfg.OnValueChanged(CCCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
     }
 
     private void OnHandleState(EntityUid uid, CombatModeComponent component, ref AfterAutoHandleStateEvent args)
@@ -109,7 +110,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         //CorvaxGoob-CombatMode-Sound-Start
         if (!TryComp<CombatModeComponent>(entity, out var comp))
             return;
-        PlayCombatSound(entity, comp, inCombatMode);
+        PlayCombatModeSound(entity, comp, inCombatMode);
         //CorvaxGoob-CombatMode-Sound-End
 
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
@@ -133,16 +134,32 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     }
 
     //CorvaxGoob-CombatMode-Sound-Start
-    private void PlayCombatSound(EntityUid uid, CombatModeComponent comp, bool combatModeOn)
+
+    /// <summary>
+    /// Plays sounds based on activation/deactivation of the CombatMode
+    /// </summary>
+    /// <param name="uid">uid of entity that'll play the sound</param>
+    /// <param name="comp">CombatComponent of the entity</param>
+    /// <param name="combatModeOn">Determines what sound to play. If it's true - we've activated the CombatMode, if it's false - we've deactivated CombatMode</param>
+    private void PlayCombatModeSound(EntityUid uid, CombatModeComponent comp, bool combatModeOn)
     {
-        if (comp.CombatActivationSound == null)
-            return;
-        if (comp.CombatDeactivationSound == null)
+        if (_combatModeSoundEnabled == false)
             return;
 
-        if (_combatModeSoundEnabled)
-            // if combatModeOn is true - we went into the harm mode. if it's false - then we went off the harm mode
-            _audio.PlayLocal(combatModeOn ? comp.CombatActivationSound : comp.CombatDeactivationSound, uid, uid);
+        switch (combatModeOn)
+        {
+            case true:
+                if (comp.CombatActivationSound == null)
+                    return;
+                _audio.PlayLocal(comp.CombatActivationSound, uid, uid);
+                break;
+
+            case false:
+                if (comp.CombatDeactivationSound == null)
+                    return;
+                _audio.PlayLocal(comp.CombatDeactivationSound, uid, uid);
+                break;
+        }
     }
     //CorvaxGoob-CombatMode-Sound-End
 }
