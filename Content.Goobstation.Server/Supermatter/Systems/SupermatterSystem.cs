@@ -78,6 +78,7 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
     [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
 
     private DelamType _delamType = DelamType.Explosion;
+    private Random _rand = new(); // CorvaxGoob-SM-Accent-Sound
 
     public override void Initialize()
     {
@@ -146,6 +147,7 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
             HandleDelamination(uid, sm);
 
         HandleSoundLoop(uid, sm);
+        TryPlaySupermatterAccentSound(uid); // CorvaxGoob-SM-Accent-Sound
 
         if (sm.ZapAccumulator >= sm.ZapTimer)
         {
@@ -512,6 +514,50 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
 
         return DelamType.Explosion;
     }
+
+    // CorvaxGoob-SM-Accent-Sounds-Start
+    /// <summary>
+    /// Tries to play accent sound. Sounds will be different if Supermatter is delamming or not.
+    /// </summary>
+    /// <param name="uid">uid of the SM</param>
+    private void TryPlaySupermatterAccentSound(EntityUid uid)
+    {
+        if (!TryComp<SupermatterComponent>(uid, out var comp))
+            return;
+        if (comp.Activated == false)
+            return;
+
+        // Chooses what sound to play, based on damage of the SM
+        var randomSound = comp.Damage > comp.WarningPoint
+            ? comp.AccentSoundsDelam
+            : comp.AccentSoundsNormal;
+
+        if (_gameTiming.CurTime >= comp.NextAccentSound)
+        {
+            _audio.PlayPredicted(randomSound, uid, uid);
+            ResetAccentSounds(uid);
+        }
+
+        Dirty(uid, comp);
+    }
+
+    /// <summary>
+    /// Resets the timer when to play accent sound
+    /// </summary>
+    /// <param name="uid">uid of the SM</param>
+    private void ResetAccentSounds(EntityUid uid)
+    {
+        if (!TryComp<SupermatterComponent>(uid, out var comp))
+            return;
+
+        comp.NextAccentSound = _gameTiming.CurTime +
+                               TimeSpan.FromSeconds(_rand.Next(comp.MinSoundPlaytime.Seconds,
+                                   comp.MaxSoundPlaytime.Seconds));
+
+        Dirty(uid, comp);
+
+    }
+    // CorvaxGoob-SM-Accent-Sounds-End
 
     /// <summary>
     ///     Handle the end of the station.
