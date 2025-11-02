@@ -310,6 +310,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeRifleLecter
   name: lecter safe
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: EntityTableContainerFill
     containers:
@@ -329,6 +330,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeSubMachineGunDrozd
   name: drozd safe
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: EntityTableContainerFill
     containers:
@@ -348,6 +350,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunEnforcer
   name: enforcer safe
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: EntityTableContainerFill
     containers:
@@ -366,6 +369,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunKammerer
+  abstract: true # Orion | Alert Level Locked
   name: kammerer safe
   components:
   - type: EntityTableContainerFill
@@ -387,6 +391,7 @@
   suffix: Wt550
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   name: wt550 safe
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: EntityTableContainerFill
     containers:
@@ -406,6 +411,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeLaserCarbine
   name: laser safe
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: EntityTableContainerFill
     containers:

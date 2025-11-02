@@ -26,3 +26,13 @@
         whitelist:
           components:
           - FaceHugger
+
+- type: entity
+  parent: [ GlassBoxLaserFilledAlertUnlocked, AlertLevelLockRedAlert ]
+  id: GlassBoxLaserFilledAlertLocked
+  suffix: AntiqueLaser, Filled, Alert Level Lock
+
+- type: entity
+  parent: [ GlassBoxLaserFilled ]
+  id: GlassBoxLaserFilledAlertUnlocked
+  suffix: AntiqueLaser, Filled

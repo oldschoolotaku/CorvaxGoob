@@ -158,6 +158,7 @@
   id: GlassBoxLaserFilled
   parent: GlassBoxLaser
   suffix: AntiqueLaser, Filled
+  abstract: true # Orion | Alert Level Locked
   components:
   - type: ContainerFill
     containers:

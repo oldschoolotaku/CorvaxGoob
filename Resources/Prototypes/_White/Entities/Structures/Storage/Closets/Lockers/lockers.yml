@@ -1,0 +1,16 @@
+- type: entity
+  abstract: true
+  id: AlertLevelLockBlueAlert
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+
+- type: entity
+  abstract: true
+  id: AlertLevelLockRedAlert
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - blue
