@@ -185,5 +185,17 @@ namespace Content.Shared.Maps
 
         [DataField]
         public float TileRipResistance = 125f;
+
+        /// <summary>
+        /// CrystallEdge: Vanilla tile filtering
+        /// </summary>
+        [DataField]
+        public bool EditorHidden { get; private set; } = true;
+
+        /// <summary>
+        /// CrystallEdge: used for lightning calculation through zlevels
+        /// </summary>
+        [DataField]
+        public bool Transparent = false;
     }
 }
